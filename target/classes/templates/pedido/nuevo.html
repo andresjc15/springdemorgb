@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1> Pedido</h1>
+
+		<div class="card">
+			<div class="card-header">Solicitar pedido</div>
+			<div class="card-body">
+
+				<form th:action="@{/pedido/save}" th:object="${pedido}" 
+					method="post">
+					<div class="form-group">
+						<label for="id">ID:</label> 
+						<input type="text" class="form-control" 
+							placeholder="Codigo de pedido"
+							th:field="*{codigo}">
+					</div>
+					<div class="form-group">
+						<label for="fecha">Fecha:</label> 
+						<input type="text" class="form-control" 
+							placeholder="fecha"
+							th:field="*{fecha}">
+					</div>
+					<div class="form-group">
+						<label for="mensaje">Mensaje:</label> 
+						<input type="text" class="form-control"
+							placeholder="Ingrese mensaje"
+							th:field ="*{mensaje}">
+					</div>
+					
+					
+					<button type="submit" class="btn btn-primary">
+						<i class = "fas fa-save"></i> Agregar</button>
+					<a th:href = "@{/pedido}"
+							class = "btn btn-danger">
+							<i class = "fas fa-undo"></i> Cancelar
+					</a>
+				</form>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
